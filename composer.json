@@ -1,0 +1,64 @@
+{
+    "name": "laravel/laravel",
+    "description": "The Laravel Framework.",
+    "keywords": ["framework", "laravel"],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": ">=5.5.9",
+        "laravel/framework": "5.1.*",
+        "maatwebsite/excel": "~2.1.0",
+        "barryvdh/laravel-debugbar": "^2.2",
+        "unisharp/laravel-ckeditor": "^4.5",
+        "unisharp/laravel-filemanager": "^1.5",
+        "laravelcollective/html": "5.1.*",
+        "sammyk/laravel-facebook-sdk": "^3.0",
+        "laracasts/flash": "^2.0",
+        "laravel/socialite": "^2.0",
+        "illuminate/html": "^5.0",
+        "guzzlehttp/guzzle": "~5.0",
+        "illuminate/pagination": "^5.2"
+    },
+    "require-dev": {
+        "fzaninotto/faker": "~1.4",
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "~4.0",
+        "phpspec/phpspec": "~2.1",
+        "laravel/cashier": "~5.0"
+
+    },
+    "autoload": {
+        "classmap": [
+            "database"
+        ],
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/TestCase.php"
+        ]
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "php artisan clear-compiled",
+            "php artisan optimize"
+        ],
+        "pre-update-cmd": [
+            "php artisan clear-compiled"
+        ],
+        "post-update-cmd": [
+            "php artisan optimize"
+        ],
+        "post-root-package-install": [
+            "php -r \"copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "php artisan key:generate"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist"
+    }
+}
