@@ -1,0 +1,23 @@
+.newsletter .box-content {
+  background: #F4F4F4;
+  padding: 20px 20px 27px; }
+.newsletter .dropdown-btn {
+  background: #00bbd3; }
+  .newsletter .dropdown-btn i {
+    margin-right: 5px; }
+  .newsletter .dropdown-btn:hover {
+    background: #e81d62; }
+
+.newsletter-error, .newsletter-success {
+  display: block;
+  text-align: center;
+  margin-top: 5px;
+  font-size: 16px;
+  line-height: 20px;
+  transition: .3s all ease; }
+
+.newsletter-error {
+  color: #f34235; }
+
+.newsletter-success {
+  color: #4bae4f; }

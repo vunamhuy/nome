@@ -1,0 +1,13 @@
+.vide_cnt{
+    position: relative;
+}
+.vide h2, .rd-video_cnt h2{
+    font-size: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #FFF;
+}
+
+.vide,.rd-video_cnt{
+    padding: 50px 0;
+}

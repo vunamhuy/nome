@@ -1,0 +1,73 @@
+.tm_product_slideshow {
+  border: 1px solid #e4e4e4;
+  border-radius: 3px;
+  padding: 50px 80px 40px;
+  margin-top: 30px; }
+  .tm_product_slideshow .slideshow-product:before, .tm_product_slideshow .slideshow-product:after {
+    display: table;
+    content: "";
+    line-height: 0; }
+  .tm_product_slideshow .slideshow-product:after {
+    clear: both; }
+  .tm_product_slideshow .image {
+    float: left;
+    margin-right: 75px; }
+  .tm_product_slideshow .caption {
+    overflow: hidden; }
+  .tm_product_slideshow .name {
+    font-size: 34px;
+    line-height: 53px;
+    color: #333; }
+    .tm_product_slideshow .name + .description {
+      margin-top: 10px; }
+  .tm_product_slideshow .description {
+    font-size: 14px;
+    line-height: 25px; }
+  .tm_product_slideshow .description + .price {
+    margin-top: 15px; }
+  .tm_product_slideshow .price {
+    font: 400 34px/34px 'Roboto', sans-serif;
+    color: #00bbd3; }
+  .tm_product_slideshow .cart-button {
+    padding-bottom: 5px;
+    margin-top: 20px; }
+  .tm_product_slideshow .product-btn-add {
+    background: #00bbd3; }
+    .tm_product_slideshow .product-btn-add:hover {
+      background: #4bae4f; }
+  .tm_product_slideshow .owl-prev, .tm_product_slideshow .owl-next {
+    font-size: 34px;
+    line-height: 35px;
+    color: #C5C5C5; }
+    .tm_product_slideshow .owl-prev:hover, .tm_product_slideshow .owl-next:hover {
+      color: #00bbd3; }
+  .tm_product_slideshow .owl-controls .owl-buttons div {
+    margin-top: -18px; }
+
+@media (max-width: 1199px) {
+  .slideshow-product .image {
+    width: 25% !important;
+    margin-right: 40px; } }
+@media (min-width: 768px) and (max-width: 991px), (max-width: 580px) {
+  .tm_product_slideshow .name {
+    font-size: 28px;
+    line-height: 33px; }
+  .tm_product_slideshow .price {
+    font-size: 24px;
+    line-height: 24px; } }
+@media (max-width: 520px) {
+  .tm_product_slideshow {
+    padding: 20px 60px; }
+
+  .slideshow-product .image {
+    width: 80% !important;
+    margin: 0 auto 15px;
+    float: none; } }
+@media (max-width: 400px) {
+  .slideshow-product .price {
+    font-size: 20px;
+    line-height: 20px; }
+
+  .slideshow-product .product-btn-add {
+    min-width: 100%;
+    display: block; } }

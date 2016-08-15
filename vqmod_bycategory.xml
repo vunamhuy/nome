@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+   <id>Replace the css property in heading title in Home page</id>
+   <version>1.0</version>
+   <vqmver>2.X</vqmver>
+   <author>Melindacare</author>
+   <file name="catalog/model/catalog/product.php">
+       <operation error="skip" info="Replace dateadded with dateavailable">
+           <search position="replace"><![CDATA[
+           'p.date_added'
+           ]]></search>
+           <add><![CDATA[
+           'p.date_added',
+           'p.date_available'
+           ]]></add>
+       </operation>
+   </file>
+</modification>

@@ -1,0 +1,21 @@
+.parallax {
+	line-height:27px;
+	font-size:15px;
+	margin-bottom:30px;
+	color:#fff;
+}
+.parallax>div.link {
+	cursor:pointer
+}
+.parallax>div {
+	position:relative;
+	padding:19% 0;
+	color:#fff;
+	background-position:top;
+	background-repeat:no-repeat;
+	background-size:cover
+}
+.parallax p {
+	position:relative;
+	display:block;
+}

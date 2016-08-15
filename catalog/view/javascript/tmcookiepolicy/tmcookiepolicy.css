@@ -1,0 +1,29 @@
+#cookie-space {
+	display:none;
+	height: 51px;
+}
+#cookie-consent {
+	width: 100%;
+	position: fixed;
+	left: 0;
+	z-index: 999;
+	background:#00bd35;
+	display: none;
+	padding: 10px 0px;
+	top: 0;
+	color:#fff;
+	font-weight:bold;
+	vertical-align:middle;
+}
+#cookie-consent #accept:hover {
+	color:#000
+}
+#cookie-consent #accept {
+	float: right;
+	color: #FFF;
+	cursor: pointer;
+}
+#cookie-inner {
+	display: block;
+
+}

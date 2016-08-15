@@ -1,0 +1,9 @@
+/*==================  TM GOOGLE MAP  ======================*/
+.map_model img {
+    max-width: none !important;
+}
+
+
+.map_locations{
+     display: none;
+ }

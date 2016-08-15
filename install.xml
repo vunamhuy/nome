@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+    <name>CKEditor 4.4.6 + KCFinder 3.12</name>
+    <version>1.0</version>
+    <author>Glassmedia</author>
+    <link>http://www.glassmedia.cl</link>
+    <code>CKeditor+KCFinder</code>
+    <file path="admin/controller/catalog/product.php">
+        <operation>
+            <search><![CDATA[public function add() {]]></search>
+            <add position="after"><![CDATA[$this->session->data['KCFINDER'] =  Array('disabled' => FALSE);]]></add>
+        </operation>
+        <operation>
+            <search><![CDATA[public function edit() {]]></search>
+            <add position="after"><![CDATA[$this->session->data['KCFINDER'] =  Array('disabled' => FALSE);]]></add>
+        </operation>
+    </file>
+    <file path="admin/view/template/catalog/product_form.tpl">
+        <operation>
+            <search><![CDATA[<div id="content">]]></search>
+            <add position="before"><![CDATA[<script src="<?= HTTPS_SERVER; ?>view/ckeditor/ckeditor.js"></script>]]></add>
+        </operation>
+        <operation>
+            <search><![CDATA[$('#input-description<?php echo $language['language_id']; ?>').summernote({height: 300});]]></search>
+            <add position="replace"><![CDATA[CKEDITOR.replace( 'product_description[<?php echo $language['language_id']; ?>][description]' );]]></add>
+        </operation>
+    </file>
+</modification> 
