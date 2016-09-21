@@ -25,7 +25,7 @@
                                         <tr>
                                             <th></th>
                                             <th>
-                                                Extra small devices
+                                                Extra small devices 123
                                                 <small>Phones (&lt;768px)</small>
                                             </th>
                                             <th>
