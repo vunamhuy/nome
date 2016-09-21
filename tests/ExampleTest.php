@@ -22,6 +22,7 @@ class ExampleTest extends TestCase
      *
      * @return void
      */
+<<<<<<< f9ee1c69dd63d27d70a3e7e0b777509dfe353dcc
     public function testBasicExample1()
     {
         $this->assertTrue(true);
