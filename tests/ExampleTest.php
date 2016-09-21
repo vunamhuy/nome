@@ -16,4 +16,15 @@ class ExampleTest extends TestCase
         $this->visit('/')
              ->see('Laravel 5');
     }
+
+    /**
+     * A basic functional test example.
+     *
+     * @return void
+     */
+    public function testBasicExample1()
+    {
+        $this->visit('/')
+             ->see('Laravel 5.1');
+    }
 }
