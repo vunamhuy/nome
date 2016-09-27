@@ -14,6 +14,7 @@ use DB;
 use Validator;
 use App\Product;
 use Cache;
+use App\Repositories\Eloquents\EventSportRepository as EventSportRepository;
 
 class MainController extends Controller
 {
@@ -134,5 +135,10 @@ class MainController extends Controller
                 'message' => 'Not authorization'
                 ]);
         }
+    }
+
+    public function test(){
+        $data = new EventSportRepository;
+        dd($data->test());
     }
 }

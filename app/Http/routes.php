@@ -1,5 +1,5 @@
 <?php
-
+Route::get('/test', 'MainController@test');
 Route::get('/', 'MainController@index');
 
 Route::group(['prefix' => 'livescores'], function()

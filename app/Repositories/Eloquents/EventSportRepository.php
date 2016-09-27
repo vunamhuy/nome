@@ -5,6 +5,7 @@ use App\Team;
 use App\League;
 use DB;
 use App\Repositories\Interfaces\EventSportInterface;
+use App\Repositories\Eloquents\TeamRepository;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File as Files;
 
@@ -13,6 +14,7 @@ class EventSportRepository extends Repository implements EventSportInterface {
     * Eloquent model
     */
     protected $model;
+
     /**
     * @param Lesson $model
     */
@@ -67,5 +69,9 @@ class EventSportRepository extends Repository implements EventSportInterface {
             }
         }
         return false;
+    }
+    public static  function test(){
+        $teamRepository = new TeamRepository;
+        return $teamRepository->test();
     }
 }

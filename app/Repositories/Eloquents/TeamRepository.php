@@ -103,4 +103,8 @@ class TeamRepository extends Repository implements TeamInterface {
         }
         return false;
     }
+
+    public function test(){
+        echo 123;
+    }
 }
