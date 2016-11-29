@@ -91,14 +91,17 @@ class QuizController extends Controller {
 		$input = $req->all();
 		if(isset($input['option'])){
 			$array_of_options = $input['option'];
+			// dd($array_of_options);
+			// dd($array_of_options);
 			foreach($array_of_options as $key => $value){
 				//$key = question id
 				//$value = user submitted answer
 				$answer = Answers::select('option_id')->where('question_id','=',$key)->get();
+				// dd($answer);
 				if(count($answer) === 1){
 					//Single answer
 					$answer = $answer->first();
-					if($answer->option_id === $value){
+					if($answer->option_id == $value){
 						//User answer is correct
 						$correct_answer[$key] = $value;
 					}else{
@@ -107,13 +110,16 @@ class QuizController extends Controller {
 					}
 				}else{
 					//Multiple answer
+					$multiple_right_answer = [];
 					foreach($answer as $ans){
 						foreach ($value as $val) {
-							if($ans->option_id === $val){
+							if($ans->option_id == $val){
 								$multiple_right_answer[] = $val;
 							}
 						}
 					}
+					// dd($answer);
+					// dd($multiple_right_answer);
 					if(isset($multiple_right_answer)){
 						if(count($multiple_right_answer) === count($answer)){
 							$correct_answer[$key] = $value;
@@ -131,6 +137,7 @@ class QuizController extends Controller {
 				//Get the skill result
 				$correct_answer_array = array_keys($correct_answer);
 				$chart = $this->getSkillResult($correct_answer_array);
+				// dd($correct_answer_count);
 				$this->generatePdf($chart);
 			}else{
 				$correct_answer_count = 0;
@@ -154,7 +161,7 @@ class QuizController extends Controller {
 			\DB::table('results')->insert($result_data);
 			$user_given_inputs = $input['option'];
 			//Call the pdf creation and sending email function here to include the $skill data and user result data
-
+			// dd($result_data);
 			return view('result')->with(['chart' => $chart,'user_given_inputs' => $user_given_inputs,'percentage' => $success_percentage,'correct_answer' => $correct_answer,'wrong_answer' => $wrong_answer]);
 		}else{
 			return view('result')->with(['message' => 'You did not answer any question. Try again!']);
@@ -166,6 +173,7 @@ class QuizController extends Controller {
 		if(count($ids) > 0){
 			foreach($ids as $id){
 				$skill_id = \DB::table('skill_question')->join('skills','skill_question.skill_id','=','skills.id')->select('skills.id')->where('question_id','=',$id)->get();
+				// dd($skill_id);
 				foreach($skill_id as $id){
 					$skills_id_array[] = $id->id;
 				}
@@ -198,7 +206,7 @@ class QuizController extends Controller {
 	//Populate the html file to be converted into pdf
 	public function getUserStatsForPdf(){
 		$user = \Auth::user();
-		$user_stat = \DB::table('ressults')->where('user_id','=',$user->id)->get();
+		$user_stat = \DB::table('results')->where('user_id','=',$user->id)->get();
 		return $user_stat;
 	}
 	public function getSkillStats(){
@@ -212,7 +220,7 @@ class QuizController extends Controller {
 		$file_path = public_path('report');
 		$user_stat = $this->getUserStatsForPdf();
 		$skill_stat = $chart;
-		$htmlcontent = view('report.report')->with(['user_stat' => $user_stat,'skill_stat']);
+		$htmlcontent = view('report.report')->with(['user_stat' => $user_stat,'skill_stat' => $skill_stat]);
 		\PDF::loadHTML($htmlcontent)
 			->setPaper('a4')
 			->setOrientation('portrait')
@@ -220,15 +228,23 @@ class QuizController extends Controller {
 		$mail_template = 'emails.email_report';
 		$data['receipent_name'] = \Auth::user()->name;
 		$data['receipent_email'] = \Auth::user()->email;
-		$data['message'] = $message;
 		$mail_receipents[\Auth::user()->email] = \Auth::user()->name;
 		$mail_subject = 'Result Report';
-		$mailMessage = 'Please see the report attatched for you order.';
+		$message = 'Please see the report attatched for you order.';
+		$data['message'] = $message;
 		$mail_attachment = $file_path.$file_name;
-		\Mail::send($mail_template,$data,
-		function($mailMessage) use ($mail_receipents, $mail_subject, $mail_attachment){
-			$message->to($mail_receipents)->subject($mail_subject);
-			$message->attach($mail_attachment);
+		// \Mail::send($mail_template,$data,
+		// function($mailMessage) use ($mail_receipents, $mail_subject, $mail_attachment){
+		// 	$mailMessage->to($mail_receipents)->subject($mail_subject);
+		// 	$mailMessage->attach($mail_attachment);
+		// });
+
+		\Mail::send($mail_template, $data, function ($message) use ($data, $mail_attachment, $mail_subject) {
+		    $message->from('vanhuy.vu@gmail.com', 'Laravel');
+		    $message->to($data['receipent_email']);
+		    $message->attach($mail_attachment);
+		    $message->subject($mail_subject);
+
 		});
 		unlink($file_path.$file_name);
 	}

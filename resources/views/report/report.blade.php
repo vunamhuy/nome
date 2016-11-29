@@ -4,8 +4,7 @@
     <body>
         <h3> User statistics </h3>
         <ul class="list-group">
-            <li class="list-group-item">User Name : {{ $user->name }} </li>
-            <li class="list-group-item">User Email: {{ $user->email }} </li>
+           
         </ul>
 
 
