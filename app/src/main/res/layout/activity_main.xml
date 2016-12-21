@@ -14,7 +14,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Chúc mừng giáng sinh an lành!"
+        android:text="Chúc em mùa giáng sinh an lành!"
         android:id="@+id/textView" />
 
     <ImageView

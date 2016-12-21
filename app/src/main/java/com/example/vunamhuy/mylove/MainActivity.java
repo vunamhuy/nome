@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent mhMusic = new Intent(getApplicationContext(), Music.class);
                 startActivity(mhMusic);
+                song.stop();
             }
         });
     }
