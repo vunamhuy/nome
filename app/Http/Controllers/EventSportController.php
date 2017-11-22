@@ -37,7 +37,13 @@ class EventSportController extends Controller
         //
         $events = EventSport::where('id', $id)->first();
         $ratios = EventRatio::with(['event_sport', 'event_result'])->where('event_id', $id)->paginate(10);
-        return view('event.edit', compact('events', 'ratios'));
+        $statusCount = 0;
+        foreach ($ratios as $ratio) {
+            if ($ratio->status == 1) {
+                $statusCount += 1;
+            }
+        }
+        return view('event.edit', compact('events', 'ratios', 'statusCount'));
     }
 
     public function update(Request $request, $id)

@@ -41,7 +41,7 @@
                                             {{ $ratio->event_sport->competitor->name }}
                                         </td>
                                         <td>
-                                            {!! Form::select('status', $statuses, $ratio->status, array('class' => 'form-control')) !!}
+                                            {!! Form::select('status', $statuses, $ratio->status, array('class' => 'form-control', 'disabled' => $ratio->status == 1 ? true : false)) !!}
                                         </td>
                                     </tr>
                                 </table>

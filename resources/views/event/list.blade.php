@@ -8,7 +8,7 @@
     </thead>
     <tbody>
     @foreach ($events as $event)
-        <tr>
+        <tr data-link='{{ action('EventSportController@edit', $event->id) }}'>
             <td>
             @if($event->team->file->filename)
             <img style="width: 40px; box-shadow: 0 0 2px #123;" src="{{ route('images', $event->team->file->filename) }}" class="img-circle img-responsive" alt="" width="100" height="100">
