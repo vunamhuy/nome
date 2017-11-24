@@ -101,7 +101,9 @@ class AuthController extends Controller
             'password'  => $password
         ], $remember == 1 ? true : false))
         {
-
+            if (\Session::get('url_before_login')) {
+                return redirect()->to(\Session::get('url_before_login'));
+            }
             if( $this->auth->user()->hasRole('supper_user') || $this->auth->user()->hasRole('basic_user') || $this->auth->user()->hasRole('free_user'))
             {
                 return redirect()->route('user.index');
