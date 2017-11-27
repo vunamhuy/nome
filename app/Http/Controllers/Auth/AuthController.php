@@ -179,7 +179,7 @@ class AuthController extends Controller
     public function getSocialHandle( $provider )
     {
         $user = Socialite::driver( $provider )->user();
-
+        var_dump(1);die;
         Request::session()->push('user', $user->user);
 
         $socialUser = null;

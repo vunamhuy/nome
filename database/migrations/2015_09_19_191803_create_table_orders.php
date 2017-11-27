@@ -13,11 +13,11 @@ class CreateTableOrders extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->float('total_paid');
-            $table->text('name');
-            $table->text('phone');
-            $table->text('address');
-            $table->text('comment');
-            $table->text('email');
+            $table->string('name', 250);
+            $table->string('phone', 250);
+            $table->string('address', 250);
+            $table->string('comment', 250);
+            $table->string('email', 250);
             $table->timestamps();
         });
     }
